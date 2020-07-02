@@ -1,4 +1,7 @@
 # PI　第三方　APP
+
+虎哥ＰＩ　ＡＰＰ　沙盒地址：https://developers.minepi.com/sandbox/9uLOUU5y0wUTbZkcpUlEWL4Oib20tdwmRvj9Xqpi4CFq
+
 Overview
 One of the core principles at Pi is to create simple user experience through progressive decentralization, which also applies to how we facilitate developers to build Pi Apps. This is the main reason for adopting industry standard technologies, such as JavaScript, HTML, CSS, and iframes, for developers to integrate with Pi, so that they can focus more on building awesome applications rather than getting complex technologies to work. Pi 3rd-party apps will initially be hitting Pi’s backend so that they can iterate on their app designs and establish their use cases and audiences (user bases). Once they are ready and the blockchain becomes live, their backend will be able to adapt to hit the Pi Testnet or Mainnet directly, eventually achieving decentralization. This ensures the development of utility and decentralization in parallel rather than in sequence, just like Pi Network itself.
 
@@ -76,3 +79,4 @@ This attribute can have three values: "succeeded", "failed", "requested".
 requested: this is the initial state before a transfer request is accepted/rejected by the Pioneer.
 succeeded: this means that the transfer request was accepted by the Pioneer and it the requested amount of Pi has been successfuly deposited into the app's wallet.
 failed: this is the state when the transfer has failed. A transfer can fail for multiple reasons as described above.
+
