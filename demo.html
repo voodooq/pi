@@ -1,0 +1,69 @@
+<script src="https://downloads.minepi.com/sdk/v1/prod.js"></script>
+<script type="text/javascript">
+	const PiNetworkClient = window.PiNetwork;
+	async function init(){
+		try {
+	  		const user = await PiNetworkClient.Authenticate();
+	  		console.log(`Hello ${user.username}`);
+	  		//const content = vistuser.innerHTML
+	  		document.getElementById('vistuser').innerHTML = user.username;
+	  		this.getBalance();
+		} catch (err) {
+			alert(err);
+		  // Not able to fetch the user
+		}
+	}
+	//转币
+	async function getTransfer(){
+		try {
+ 			var transferRequest = await PiNetworkClient.RequestTransfer(3.14, "给虎哥转3.14Pi")
+ 			//this.getStatus();
+ 			//alert(transferRequest.status);
+ 			var goresult = setInterval(function(){
+ 				var results = transferRequest.status;
+ 				if(results == 'successed'){
+ 					alert("转Pi成功");
+ 					clearInterval(goresult);
+ 					this.getBalance();
+
+ 				}else if(results == 'failed'){
+					alert("转Pi失败");
+ 					clearInterval(goresult);	
+ 				}
+ 			},5000);
+		} catch(err) {
+			alert(err);
+		  // Technical problem (eg network failure). Please try again
+		}
+	}
+	//获取当前状态
+	async function getBalance() {
+		try {
+	  		var transferRequest = await PiNetworkClient.Balance();
+	  		document.getElementById('pibalance').innerHTML = transferRequest.balance;
+	  	}catch(err){
+	  		alert(err);
+	  	}
+	}
+</script>
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>虎哥Pi APP DEMO</title>
+</head>
+<body onload="init()">
+<center>
+欢迎<span id='vistuser'></span>>关注虎哥
+<br>
+<br>
+<br><a href ='https://www.youtube.com/channel/UCoCnq6Uc2-jDO35U98SmvRw' target="_blank">YouTube 频道 "虎哥秀"</a>
+<br><a href='https://space.bilibili.com/538263132'  target="_blank">哔哩哔哩 频道 "虎哥秀"</a>
+<br>
+<br>
+	<button onclick="getTransfer()">点击这里给虎哥转3.14Pi</button>
+	<br>
+	当前余额：<span id='pibalance'>0</span>
+	</center>
+</body>
+</html>
